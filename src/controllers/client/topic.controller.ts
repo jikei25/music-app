@@ -5,9 +5,10 @@ import { Request, Response } from 'express';
 export const topics = async (req: Request, res: Response) => {
   const topics = await Topic.find({
     deleted: false,
+    status: 'active',
   });
-  console.log(topics)
   res.render('client/pages/topics/index', {
-    title: "Chủ đề bài hát",
+    title: 'Chủ đề bài hát',
+    topics: topics,
   });
 };

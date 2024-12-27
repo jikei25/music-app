@@ -2,25 +2,26 @@ import mongoose from 'mongoose';
 import slug from 'mongoose-slug-updater';
 mongoose.plugin(slug);
 
-const topicSchema = new mongoose.Schema(
+const singerSchema = new mongoose.Schema(
   {
-    title: String,
+    fullName: String,
     avatar: String,
-    description: String,
+    status: String,
     slug: {
       type: String,
-      slug: 'title',
+      slug: 'fullName',
       unique: true,
     },
-    status: String,
     deleted: {
       type: Boolean,
       default: false,
     },
     deletedAt: Date,
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+  },
 );
 
-const Topic = mongoose.model('Topic', topicSchema);
-export default Topic;
+const Singer = mongoose.model('Singer', singerSchema);
+export default Singer;
